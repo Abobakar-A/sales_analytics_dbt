@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: sales_final
+    description: 'Final sales model with aggregated revenue.'
+    columns:
+      - name: country
+        tests:
+          - not_null
+      - name: total_orders
+        tests:
+          - not_null
+      - name: partition_group
+        description: 'The partition group for the sales data (recent or historical).'
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['recent', 'historical']
